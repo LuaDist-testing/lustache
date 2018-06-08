@@ -36,7 +36,7 @@ Below is quick example how to use lustache:
     view_model = {
       title = "Joe",
       calc = function ()
-        return 2 + 4;
+        return 2 + 4
       end
     }
 
@@ -132,7 +132,7 @@ The behavior of the section is determined by the value of the key.
 
 #### False Values or Empty Lists
 
-If the `person` key exists and has a value of `null`, `undefined`, or `false`,
+If the `person` key exists and has a value of `nil` or `false`,
 or is an empty list, the block will not be rendered.
 
 Template:
@@ -154,7 +154,7 @@ Output:
 
 #### Non-Empty Lists
 
-If the `person` key exists and is not `null`, `undefined`, or `false`, and is
+If the `person` key exists and is not `nil` or `false`, and is
 not an empty list the block will be rendered one or more times.
 
 When the value is a list, the block is rendered once for each item in the list.
@@ -170,11 +170,11 @@ Template:
 View:
 
     {
-      stooges = [
+      stooges = {
         { name = "Moe" },
         { name = "Larry" },
         { name = "Curly" }
-      ]
+      }
     }
 
 Output:
@@ -240,7 +240,6 @@ Output:
 If the value of a section key is a function, it is called with the section's
 literal block of text, un-rendered, as its first argument. The second argument
 is a special rendering function that uses the current view as its view argument.
-It is called in the context of the current view object.
 
 Template:
 
@@ -250,10 +249,8 @@ View:
 
     {
       name = "Tater",
-      bold = function (self)
-        return function (text, render) 
+      bold = function (text, render)
           return "<b>" .. render(text) .. "</b>"
-        end
       end
     }
 
@@ -265,7 +262,7 @@ Output:
 
 An inverted section opens with `{{^section}}` instead of `{{#section}}`. The
 block of an inverted section is rendered only if the value of that section's tag
-is `null`, `undefined`, `false`, or an empty list.
+is `nil`, `false`, or an empty list.
 
 Template:
 
@@ -275,7 +272,7 @@ Template:
 View:
 
     {
-      "repos": {}
+      repos = {}
     }
 
 Output:

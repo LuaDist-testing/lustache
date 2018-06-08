@@ -122,7 +122,14 @@ describe("rendering", function()
   it("RenderFunctionsWithArgsTest", function()
     template = "{{# message }}H{{/ message }} Jack!"
     expectation = "Hi Jack!"
-    data = { message = function(self, text, render) return render(text).."i" end }
+    data = { message = function(text, render) return render(text).."i" end }
+    assert.equal(expectation, lustache:render(template, data, partials))
+  end)
+
+  it("RenderFunctionsUnrenderedArgsTest", function()
+    template = "{{# message }}{{H}}{{/ message }} Jack!"
+    expectation = "{{H}}i Jack!"
+    data = { message = function(text, render) return text.."i" end }
     assert.equal(expectation, lustache:render(template, data, partials))
   end)
 
@@ -154,7 +161,7 @@ describe("rendering", function()
   end)
 
   it("ArrayOfTablesFunctionTest", function()
-    template = "{{#beatles}}* {{name}}\n{{/beatles}}"
+    template = "{{#beatles}}\n* {{name}}\n{{/beatles}}"
     data = {
       beatles = {
         { first_name = "John", last_name = "Lennon" },
