@@ -1,16 +1,16 @@
 -- This file was automatically generated for the LuaDist project.
 
 package = "lustache"
-version = "1.2-1"
+version = "1.3-1"
 -- LuaDist source
 source = {
-  tag = "1.2-1",
+  tag = "1.3-1",
   url = "git://github.com/LuaDist-testing/lustache.git"
 }
 -- Original source
 -- source = {
---   url = "https://github.com/downloads/Olivine-Labs/lustache/lustache-1.2.tar.gz",
---   dir = "lustache"
+--   url = "https://github.com/Olivine-Labs/lustache/archive/v1.3.tar.gz",
+--   dir = "lustache-1.3"
 -- }
 description = {
   summary = "{{Mustache}} rendering for Lua",
